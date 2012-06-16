@@ -14,7 +14,83 @@
   </div><!-- /header -->
 
   <div data-role="content" id="home-content">
-
+  	<form action="#" method="post">
+	  	<div data-role="fieldcontain" data-mini="true">
+			<label for="offerForm_location">Localit&agrave;:</label>
+		    <input type="text" name="offerForm_location" id="offerForm_location" value=""  />
+		    <a href="#" data-role="button" data-icon="search">Localizza</a>
+	  	</div>
+	  	
+	  	<div data-role="fieldcontain" data-mini="true">
+	  		<label for="offerForm_postiLetto">Posti letto:</label>
+			<input type="range" name="offerForm_postiLetto" id="offerForm_postiLetto" value="1" min="1" max="100" data-highlight="true"  />
+		</div>
+		
+	  	<div data-role="fieldcontain" data-mini="true">
+			<label for="offerForm_dispDal">Disponibile dal:</label>
+			<input name="offerForm_dispDal" id="offerForm_dispDal" />
+			<a href="#" id="calendarDal" data-role="button" data-icon="calendar">Calendario</a>
+			<a href="#" id="clearDal" data-role="button" data-icon="clear">Clear</a>
+	  		
+	  		<label for="offerForm_dispAl">al:</label>
+	  		<input name="offerForm_dispAl" id="offerForm_dispAl" />
+			<a href="#" id="calendarAl" data-role="button" data-icon="calendar">Calendario</a>
+			<a href="#" id="clearAl" data-role="button" data-icon="clear">Clear</a>
+		</div>
+	  	
+	  	<div data-role="fieldcontain" data-mini="true">
+		    <fieldset data-role="controlgroup">
+		    	<legend>Tipologia:</legend>
+		         	<input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_1" value="choice-1" checked="checked" />
+		         	<label for="offerForm_tipologia_1">Appartamento</label>
+	
+		         	<input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_2" value="choice-2"  />
+		         	<label for="offerForm_tipologia_2">Stanza</label>
+	
+		         	<input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_3" value="choice-3"  />
+		         	<label for="offerForm_tipologia_3">Posto letto</label>
+	
+		         	<input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_4" value="choice-4"  />
+		         	<label for="offerForm_tipologia_4">Camper/Roulotte</label>
+		         	
+		         	<input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_5" value="choice-5"  />
+		         	<label for="offerForm_tipologia_5">Tenda</label>
+		    </fieldset>  				
+		</div>
+		
+		<div data-role="fieldcontain" data-mini="true">
+			<fieldset data-role="controlgroup">
+				<legend>Servizi:</legend>
+				<input type="checkbox" name="offerForm_servizi_1" id="offerForm_servizi_1" class="custom" />
+				<label for="offerForm_servizi_1">Cucina</label>
+			
+				<input type="checkbox" name="offerForm_servizi_2" id="offerForm_servizi_2" class="custom" />
+				<label for="offerForm_servizi_2">Lavanderia</label>
+			
+				<input type="checkbox" name="offerForm_servizi_3" id="offerForm_servizi_3" class="custom" />
+				<label for="offerForm_servizi_3">Animali domestici</label>
+			
+				<input type="checkbox" name="offerForm_servizi_4" id="offerForm_servizi_4" class="custom" />
+				<label for="offerForm_servizi_4">Fumatori</label>
+			</fieldset>
+		</div>
+		
+		<div data-role="fieldcontain" data-mini="true">
+			<fieldset data-role="controlgroup">
+				<legend>Disable friendly:</legend>
+				<input type="checkbox" name="offerForm_disabili_1" id="offerForm_disabili_1" class="custom" />
+				<label for="offerForm_disabili_1">Accesso</label>
+				
+				<input type="checkbox" name="offerForm_disabili_2" id="offerForm_disabili_2" class="custom" />
+				<label for="offerForm_disabili_2">Bagno</label>
+			</fieldset>
+		</div>
+		
+		<fieldset>
+				<div><button type="submit">Avanti</button></div>
+	    </fieldset>
+	</form>
+	
   </div><!-- /content -->
 
 </div><!-- /page -->
