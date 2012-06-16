@@ -18,6 +18,6 @@ public interface OffertaDAO {
 	public Long insert(Offerta entity);
 
 	public List<Offerta> findItems(Point center, Double radius, String tipologia,
-			Integer postiLettoMin, Date da, Date finoA);
+			Integer postiLettoMin, Date da, Date finoA, Boolean confermata);
 
 }
