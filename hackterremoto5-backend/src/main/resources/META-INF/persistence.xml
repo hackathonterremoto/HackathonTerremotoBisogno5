@@ -8,13 +8,13 @@
 		<!-- <validation-mode>NONE</validation-mode> -->
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernatespatial.mysql.MySQLSpatialDialect"/>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<!-- <property name="hibernate.show_sql" value="true"/> -->
 		</properties>
 		<class>org.hackathon.soluzione5.model.Offerta</class>
-		<class>org.hackathon.soluzione5.User</class>
+		<class>org.hackathon.soluzione5.model.User</class>
 		<class>org.hackathon.soluzione5.model.Richiesta</class>
 	</persistence-unit>
 </persistence>

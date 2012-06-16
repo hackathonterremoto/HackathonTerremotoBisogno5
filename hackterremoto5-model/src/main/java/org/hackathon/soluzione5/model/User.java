@@ -1,12 +1,15 @@
 package org.hackathon.soluzione5.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,21 +25,21 @@ public class User implements Serializable{
 	private String telefono;
 	private String infoContatto;
 	
-	private List<Offerta> offerte;
-	private List<Richiesta> richieste;
+	private Set<Offerta> offerte;
+	private Set<Richiesta> richieste;
 	
 	
 	public User() {
 		super();
-		richieste = new ArrayList<Richiesta>();
-		offerte = new ArrayList<Offerta>();
+		richieste = new HashSet<Richiesta>();
+		offerte = new HashSet<Offerta>();
 	}
 	
 
 
 	public User(String nome, String cognome, String email, String telefono,
-			String infoContatto, List<Offerta> offerte,
-			List<Richiesta> richieste) {
+			String infoContatto, Set<Offerta> offerte,
+			Set<Richiesta> richieste) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
@@ -47,12 +50,14 @@ public class User implements Serializable{
 		this.richieste = richieste;
 		
 		if (richieste == null)
-			richieste = new ArrayList<Richiesta>();
+			richieste = new HashSet<Richiesta>();
 		
 		if (offerte == null)
-			offerte = new ArrayList<Offerta>();
+			offerte = new HashSet<Offerta>();
 	}
 
+	@Id
+	@GeneratedValue
 	public Long getEntityId() {
 		return entityId;
 	}
@@ -61,11 +66,11 @@ public class User implements Serializable{
 	}
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade =
-	    {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy="offerte", orphanRemoval=true)
-	public List<Offerta> getOfferte() {
+	    {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy="utente", orphanRemoval=true)
+	public Set<Offerta> getOfferte() {
 		return offerte;
 	}
-	public void setOfferte(List<Offerta> offerte) {
+	public void setOfferte(Set<Offerta> offerte) {
 		this.offerte = offerte;
 	}
 	
@@ -129,12 +134,12 @@ public class User implements Serializable{
 
 
 	@OneToMany(fetch = FetchType.EAGER, cascade =
-	    {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy="richieste", orphanRemoval=true)
-	public List<Richiesta> getRichieste() {
+	    {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, mappedBy="utente", orphanRemoval=true)
+	public Set<Richiesta> getRichieste() {
 		return richieste;
 	}
 
-	public void setRichieste(List<Richiesta> richieste) {
+	public void setRichieste(Set<Richiesta> richieste) {
 		this.richieste = richieste;
 	}
 	

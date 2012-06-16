@@ -11,6 +11,7 @@ import org.hackathon.soluzione5.model.Offerta;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernatespatial.criterion.SpatialRestrictions;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,13 +56,16 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 	}
 
 	@Override
+	@Transactional
 	public Offerta findById(Long impiantoId) {
 		return super.findItemById(Offerta.class, em, impiantoId);
 	}
 
 	@Override
+	@Transactional
 	public List<Offerta> findItems(Point center, Double radius,
-			String tipologia, Integer postiLettoMin, Date da, Date finoA) {
+			String tipologia, Integer postiLettoMin, Date da, Date finoA,
+			Boolean confermata) {
 
 		Session session = (Session) em.getDelegate();
 
@@ -106,73 +110,65 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 				.add(
 
 				Restrictions.and(
-						Restrictions
-								.sqlRestriction("Intersects( GeomFromText('"
-										+ poly
-										+ "'),  StartPoint( ExteriorRing(location))  ) "),
-						Restrictions
-								.sqlRestriction("( 6371*2*ATAN2( "
-										+
+						SpatialRestrictions.contains("location", bbox),
+						Restrictions.sqlRestriction("( 6371*2*ATAN2( "
+								+
 
-										"                                                                                                                                                                                                                       SQRT( POWER( SIN((  X(StartPoint(ExteriorRing(location))) - abs("
-										+ center.getX()
-										+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
-										+ center.getX()
-										+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
-										+ center.getY()
-										+ ")*pi()/180/2),2)), "
-										+
+								+center.getX()
+								+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
+								+ center.getX()
+								+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
+								+ center.getY()
+								+ ")*pi()/180/2),2)), "
+								+ "SQRT( 1 -  POWER( SIN((  X(StartPoint(ExteriorRing(location))) - abs("
+								+ center.getX()
+								+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
+								+ center.getX()
+								+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
+								+ center.getY()
+								+ ")*pi()/180/2),2))"
+								+ "                                                                                                                                                                                                                        ) ) < "
+								+ radius)));
 
-										"SQRT( 1 -  POWER( SIN((  X(StartPoint(ExteriorRing(location))) - abs("
-										+ center.getX()
-										+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
-										+ center.getX()
-										+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
-										+ center.getY()
-										+ ")*pi()/180/2),2))"
-										+
-
-										"                                                                                                                                                                                                                        ) ) < "
-										+ radius)));
-
-		
-		
 		if ((tipologia != null) && (!tipologia.equals("")))
 			testCriteria.add(Restrictions.eq("tipologia", tipologia));
 
 		if (postiLettoMin != null)
 			testCriteria.add(Restrictions.ge("postiLetto", postiLettoMin));
-		
+
 		if (da != null)
 			testCriteria.add(Restrictions.le("disponibileDa", da));
 		if (finoA != null)
 			testCriteria.add(Restrictions.ge("disponibileFino", finoA));
+
+		if (confermata != null)
+			testCriteria.add(Restrictions.eq("confermata", confermata));
+
 		List<Offerta> results = testCriteria.list();
 
 		return results;
 
-//		CriteriaBuilder cb = em.getCriteriaBuilder();
-//		// create predicate for filtering
-//		CriteriaQuery<Offerta> itemQuery = cb.createQuery(Offerta.class);
-//		Root<Offerta> from = itemQuery.from(Offerta.class);
+		// CriteriaBuilder cb = em.getCriteriaBuilder();
+		// // create predicate for filtering
+		// CriteriaQuery<Offerta> itemQuery = cb.createQuery(Offerta.class);
+		// Root<Offerta> from = itemQuery.from(Offerta.class);
 
-//		List<Predicate> predicates = new ArrayList<Predicate>();
-//		
-//		if (postiLettoMin != null)
-//			predicates.add(cb.greaterThanOrEqualTo(
-//					from.get("postiLetto").as(Integer.class), postiLettoMin));
-//
-//		if (da != null)
-//			predicates.add(cb.lessThanOrEqualTo(
-//					from.get("disponibileDa").as(Date.class), da));
-//		if (finoA != null)
-//			predicates.add(cb.greaterThanOrEqualTo(from.get("disponibileFino")
-//					.as(Date.class), finoA));
-//
-//		
-//		return results;
-		
-	
+		// List<Predicate> predicates = new ArrayList<Predicate>();
+		//
+		// if (postiLettoMin != null)
+		// predicates.add(cb.greaterThanOrEqualTo(
+		// from.get("postiLetto").as(Integer.class), postiLettoMin));
+		//
+		// if (da != null)
+		// predicates.add(cb.lessThanOrEqualTo(
+		// from.get("disponibileDa").as(Date.class), da));
+		// if (finoA != null)
+		// predicates.add(cb.greaterThanOrEqualTo(from.get("disponibileFino")
+		// .as(Date.class), finoA));
+		//
+		//
+		// return results;
+
 	}
 
 }
