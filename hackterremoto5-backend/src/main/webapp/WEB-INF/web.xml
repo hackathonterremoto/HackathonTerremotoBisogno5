@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+
+	<display-name>Offerte alloggi</display-name>
+
+	<description>Offerte alloggi</description>
+
+
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+        	classpath*:META-INF/spring/applicationContext*.xml
+        	<!-- /WEB-INF/spring/security-app-context.xml -->
+        </param-value>
+	</context-param>
+
+
+
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Handles Spring requests -->
+	<servlet>
+		<servlet-name>offertaAlloggi</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/webmvc-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<filter>
+		<filter-name>etagFilter</filter-name>
+		<filter-class>org.springframework.web.filter.ShallowEtagHeaderFilter</filter-class>
+	</filter>
+
+	<servlet-mapping>
+		<servlet-name>offertaAlloggi</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<filter-mapping>
+		<filter-name>etagFilter</filter-name>
+		<servlet-name>offertaAlloggi</servlet-name>
+	</filter-mapping>
+
+
+
+	<welcome-file-list>
+		<welcome-file>/index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

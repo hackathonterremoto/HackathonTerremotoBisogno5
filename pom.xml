@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.hackathonterremoto</groupId>
+	<artifactId>soluzione5</artifactId>
+	<packaging>pom</packaging>
+	<name>Hackathon Terremoto Soluzione 5</name>
+	<version>0.0.1</version>
+	<description>org.hackathonterremoto.soluzione5 : Parent Project </description>
+	<url>http://hackathonterremoto.wordpress.com/</url>
+
+	<properties>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<aspectj.version>1.6.11.M1</aspectj.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<profiles>
+
+		<profile>
+		</profile>
+
+	</profiles>
+
+
+	<modules>
+		<module>hackterremoto5-model</module>
+		<module>hackterremoto5-transfer</module>
+		<module>hackterremoto5-backend</module>
+	</modules>
+</project>

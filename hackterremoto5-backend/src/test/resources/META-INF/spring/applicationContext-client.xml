@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	
+	<!-- SETUP DEL CLIENT REST per soli fini di test di integrazione-->
+    
+    <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+<!-- 	<bean id="byteConverter" class="com.thoughtworks.xstream.converters.extended.EncodedByteArrayConverter"/> -->
+	
+<!-- 	<bean id="byteArrayConverter" class="it.epocaricerca.mobile.enterprise.appstore.web.converters.ByteArrayConverter"/> -->
+		
+	<bean id="oxmMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller" >
+		 <property name="autodetectAnnotations" value="true"/>
+		 <property name="converters">
+		 	<util:list>
+<!-- 				<ref bean="byteConverter" /> -->
+			</util:list>
+		 </property>
+	</bean>
+	
+	
+	<bean id="marshallingHttpMessageConverter"
+		class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+		<property name="marshaller" ref="oxmMarshaller" />
+		<property name="unmarshaller" ref="oxmMarshaller" />
+	</bean>
+	
+    <bean id="factory" class="org.springframework.http.client.CommonsClientHttpRequestFactory"/>
+    
+	<bean id="restClient" class="org.springframework.web.client.RestTemplate">
+	
+		<property name="requestFactory" ref="factory"/>
+		<property name="messageConverters">
+			<util:list id="beanList">
+			<!--	<ref bean="byteArrayConverter" />-->
+				<ref bean="jacksonMessageConverter" /> 
+<!-- 				 <ref bean="marshallingHttpMessageConverter" /> -->
+			</util:list>
+		</property>
+		
+	</bean>
+    
+</beans>
