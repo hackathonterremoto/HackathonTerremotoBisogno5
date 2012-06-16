@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Agraria - Pianifica Raccolti</title>
+    <title>Hackathon Terremoto Bisogno 5 - Servizio Alloggi</title>
     <base href="resources/" >
     <script type="text/javascript">if(navigator.userAgent.indexOf('AppleWebKit/') == -1) document.write('<base href="' + location.protocol + '//' + location.host + location.pathname.replace(/\/[^\/]*$/, '/resources/') + '"/>')</script>
     <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css">
@@ -18,5 +18,5 @@
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
-  <body></body>
+  <body>Hello World - Servizio Alloggi</body>
 </html>
