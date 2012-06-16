@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.hackathon.soluzione5.model.converter.PointJsonSerializer;
 import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.Point;
@@ -23,7 +25,7 @@ public class Richiesta implements java.io.Serializable {
 	// Fields
 
 	private Long entityId;
-	private Point location;
+	private Point posizione;
 	private Integer raggio;
 
 	// APPARTAMENTO, STANZA, POSTO LETTO, CAMPER/ROULOTTE, TENDA
@@ -36,6 +38,7 @@ public class Richiesta implements java.io.Serializable {
 	private String servizi;
 	private Boolean disabili;
 	private String note;
+	private String indirizzo;
 
 	private User utente;
 
@@ -43,11 +46,12 @@ public class Richiesta implements java.io.Serializable {
 		super();
 	}
 
-	public Richiesta(Point location, Integer raggio, String tipologia,
+	public Richiesta(Point posizione, Integer raggio, String indirizzo, String tipologia,
 			Integer postiLetto, Date disponibileDa, Date disponibileFino,
 			String servizi, Boolean disabili, String note, User utente) {
 		super();
-		this.location = location;
+		this.posizione = posizione;
+		this.indirizzo = indirizzo;
 		this.raggio = raggio;
 		this.tipologia = tipologia;
 		this.postiLetto = postiLetto;
@@ -70,15 +74,16 @@ public class Richiesta implements java.io.Serializable {
 		this.entityId = entityId;
 	}
 
-	@Column(name = "geom")
+	@Column
 	@Type(type = "org.hibernatespatial.GeometryUserType")
 	@NotNull
-	public Point getLocation() {
-		return this.location;
+	@JsonSerialize(using=PointJsonSerializer.class)
+	public Point getPosizione() {
+		return this.posizione;
 	}
 
-	public void setLocation(Point location) {
-		this.location = location;
+	public void setPosizione(Point posizione) {
+		this.posizione = posizione;
 	}
 
 	public String getTipologia() {
@@ -155,6 +160,14 @@ public class Richiesta implements java.io.Serializable {
 
 	public void setRaggio(Integer raggio) {
 		this.raggio = raggio;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 
 }

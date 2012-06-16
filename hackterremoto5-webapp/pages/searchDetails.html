@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>Cerca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
@@ -12,49 +13,49 @@
     </script>
   </head>
   <body>
-    <div data-role="page" id="searchDetailsPage">
+    <div data-role="page" id="searchDetailsPage" >
       <div data-role="header" data-position="inline">
         <a href="search.html" data-rel="back" data-theme="b">Alloggi</a>
         <h1>Dettagli</h1>
       </div><!-- /header -->
-      <div data-role="content" id="searchDetails">
+      <div data-role="content" >
         <div class="ui-grid-a">
           <div class="ui-block-a">
             <a href="i#" data-role="button">Chiama</a>
           </div>
           <div class="ui-block-b">
-            <a href="#" data-role="button">Chiama</a>
+            <a href="#" data-role="button">e-mail</a>
           </div>
         </div><!-- /grid-a -->
         <div class="searchDetailsMainContainer">
-          <h3>San Felice sul Panaro</h3>
+          <h3 id="offer_indirizzo"></h3>
           <p>
-            <span class="detailsLabel">Numero posti letto:</span> 2
+            <span class="detailsLabel">Numero posti letto:</span>&nbsp;<span id="offer_postiLetto"></span>
           </p>
           <p>
-            <span class="detailsLabel">Tipologia:</span> Camera
+            <span class="detailsLabel">Tipologia:</span>&nbsp;<span id="offer_tipologia"></span>
           </p>
           <p>
-            <span class="detailsLabel">Disponibilità:</span> Dal 16 giugno al 30 settembre
+            <span class="detailsLabel">Disponibilità:</span> Dal <span id="offer_disponibileDa"></span> al <span id="offer_disponibileFino"></span>
           </p>
           <p>
             <span class="detailsLabel">Diversamente abili:</span><img class="detailsLabelIconRow" src="../img/check.png" />
           </p>
           <p>
-            <span class="detailsLabel">Accesso ai servizi: </span> Cucina, lavanderia, animali domestici
+            <span class="detailsLabel">Accesso ai servizi: </span>&nbsp;<span id="offer_servizi"></span>
           </p>
           <p>
-            <span class="detailsLabel">Note aggiuntive: </span> note note note note note note note note note note note note note note note note note note
+            <span class="detailsLabel">Note aggiuntive: </span> <span id="offer_note"></span>
           </p>
           <div class="searchDetailsPicContainer">
-            <img src="../img/samples/001.jpg"/>
+            <img id="offer_pic1" src=""/>
           </div>
           <div class="searchDetailsPicContainer">
-            <img src="../img/samples/002.jpg"/>
+            <img id="offer_pic2" src=""/>
           </div>
           <br />
           <div class="searchDetailsPicContainer">
-            <img src="../img/samples/003.jpg"/>
+            <img id="offer_pic3" src=""/>
           </div>
         </div>
       </div><!-- /content -->

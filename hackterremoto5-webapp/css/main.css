@@ -5,48 +5,44 @@
 .clear {
   clear: both;
 }
-
 a {
   text-decoration: none;
 }
-
 #home-content {
-  text-align:center;
+  text-align: center;
 }
 
 .home-button {
-  width:100%;
+  width: 100%;
   border: 1px solid #EEEEEE;
   margin-top: 1em;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
 }
-
+.homeButtonText {
+  font-size: 4em;
+}
 #searchpage_locationaware {
-  text-align:left;
-  margin-bottom:1em;
+  text-align: left;
+  margin-bottom: 1em;
 }
-
 #searchpage_locationaware h6 {
   -webkit-margin-before: 1em;
-  width:60%;
-  float:left;
+  width: 60%;
+  float: left;
 }
-
 #searchDetails {
   text-align: left;
 }
-
 .detailsLabel {
-  font-weight:bold;
+  font-weight: bold;
 }
-
 .detailsLabelIconRow {
-  margin-left:1em;
+  margin-left: 1em;
 }
-
 #searchDetailsPage .ui-content {
-  padding:10px;
+  padding: 10px;
 }
-
 .searchDetailsMainContainer {
   border: 1px solid #babdb6;
   border-radius: 5px;
@@ -56,11 +52,9 @@ a {
   overflow: auto;
   padding: 10px;
 }
-
 .searchDetailsPicContainer {
-  text-align:center;
+  text-align: center;
 }
-
 .searchDetailsPicContainer img {
   height: auto;
   border: 3px solid #dddddd;
