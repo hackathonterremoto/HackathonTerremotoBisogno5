@@ -47,7 +47,8 @@
 	
 	<bean
 		class="org.hackathon.soluzione5.web.dao.jpa2.JPAOffertaDAO" id="offertaDAO"/>
-	
+	<bean
+		class="org.hackathon.soluzione5.web.dao.jpa2.JPARichiestaDAO" id="richiestaDAO"/>	
 	
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />

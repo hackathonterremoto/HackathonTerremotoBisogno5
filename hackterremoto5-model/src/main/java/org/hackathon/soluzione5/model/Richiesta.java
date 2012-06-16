@@ -8,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
@@ -24,7 +25,7 @@ public class Richiesta implements java.io.Serializable {
 	private Long entityId;
 	private Point location;
 	private Integer raggio;
-	
+
 	// APPARTAMENTO, STANZA, POSTO LETTO, CAMPER/ROULOTTE, TENDA
 	private String tipologia;
 	private Integer postiLetto;
@@ -42,9 +43,6 @@ public class Richiesta implements java.io.Serializable {
 		super();
 	}
 
-
-	
-
 	public Richiesta(Point location, Integer raggio, String tipologia,
 			Integer postiLetto, Date disponibileDa, Date disponibileFino,
 			String servizi, Boolean disabili, String note, User utente) {
@@ -60,9 +58,6 @@ public class Richiesta implements java.io.Serializable {
 		this.note = note;
 		this.utente = utente;
 	}
-
-
-
 
 	// Property accessors
 	@Id
@@ -102,6 +97,7 @@ public class Richiesta implements java.io.Serializable {
 		this.postiLetto = postiLetto;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDisponibileDa() {
 		return disponibileDa;
 	}
@@ -110,6 +106,7 @@ public class Richiesta implements java.io.Serializable {
 		this.disponibileDa = disponibileDa;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDisponibileFino() {
 		return disponibileFino;
 	}
@@ -152,15 +149,9 @@ public class Richiesta implements java.io.Serializable {
 		this.utente = utente;
 	}
 
-
-
-
 	public Integer getRaggio() {
 		return raggio;
 	}
-
-
-
 
 	public void setRaggio(Integer raggio) {
 		this.raggio = raggio;

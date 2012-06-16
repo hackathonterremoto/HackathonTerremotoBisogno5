@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
@@ -67,7 +69,6 @@ public class Offerta implements java.io.Serializable {
 		this.servizi = servizi;
 		this.disabili = disabili;
 		this.note = note;
-		this.confermata = confermata;
 	}
 
 	@Lob
@@ -138,6 +139,7 @@ public class Offerta implements java.io.Serializable {
 		this.postiLetto = postiLetto;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDisponibileDa() {
 		return disponibileDa;
 	}
@@ -146,6 +148,7 @@ public class Offerta implements java.io.Serializable {
 		this.disponibileDa = disponibileDa;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDisponibileFino() {
 		return disponibileFino;
 	}

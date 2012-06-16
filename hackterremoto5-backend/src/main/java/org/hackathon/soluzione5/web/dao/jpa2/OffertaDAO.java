@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hackathon.soluzione5.model.Offerta;
 
+import com.vividsolutions.jts.geom.Point;
+
 public interface OffertaDAO {
 
 	public Offerta findById(Long impiantoId);
@@ -15,7 +17,7 @@ public interface OffertaDAO {
 
 	public Long insert(Offerta entity);
 
-	public List<Offerta> findItems(String tipologia, Integer postiLettoMin, Date da,
-			Date finoA);
+	public List<Offerta> findItems(Point center, Double radius, String tipologia,
+			Integer postiLettoMin, Date da, Date finoA);
 
 }

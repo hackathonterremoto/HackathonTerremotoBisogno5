@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.log4j.Logger;
 import org.hackathon.soluzione5.model.Offerta;
+import org.hackathon.soluzione5.model.Richiesta;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -20,17 +21,17 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
 @Component
-public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
+public class JPARichiestaDAO extends GenericDAO implements RichiestaDAO {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	private final static Logger logger = Logger.getLogger(JPAOffertaDAO.class
+	private final static Logger logger = Logger.getLogger(JPARichiestaDAO.class
 			.getName());
 
 	@Override
 	@Transactional
-	public Long insert(Offerta entity) {
+	public Long insert(Richiesta entity) {
 		em.persist(entity);
 		return entity.getEntityId();
 	}
@@ -40,7 +41,7 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 	public Long remove(Long entityId) {
 		if (entityId == null)
 			return -1L;
-		Offerta entity = em.find(Offerta.class, entityId);
+		Richiesta entity = em.find(Richiesta.class, entityId);
 		if (entity == null)
 			return -1L;
 
@@ -51,21 +52,21 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 	@Override
 	@Transactional
 	public Long countItems() {
-		return super.countItems(Offerta.class, em, null);
+		return super.countItems(Richiesta.class, em, null);
 	}
 
 	@Override
-	public Offerta findById(Long impiantoId) {
-		return super.findItemById(Offerta.class, em, impiantoId);
+	public Richiesta findById(Long impiantoId) {
+		return super.findItemById(Richiesta.class, em, impiantoId);
 	}
 
 	@Override
-	public List<Offerta> findItems(Point center, Double radius,
+	public List<Richiesta> findItems(Point center, Double radius,
 			String tipologia, Integer postiLettoMin, Date da, Date finoA) {
 
 		Session session = (Session) em.getDelegate();
 
-		Criteria testCriteria = session.createCriteria(Offerta.class);
+		Criteria testCriteria = session.createCriteria(Richiesta.class);
 
 		String poly = "POLYGON((" +
 
@@ -147,7 +148,7 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 			testCriteria.add(Restrictions.le("disponibileDa", da));
 		if (finoA != null)
 			testCriteria.add(Restrictions.ge("disponibileFino", finoA));
-		List<Offerta> results = testCriteria.list();
+		List<Richiesta> results = testCriteria.list();
 
 		return results;
 
