@@ -13,6 +13,6 @@
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<!-- <property name="hibernate.show_sql" value="true"/> -->
 		</properties>
-		<class>org.hackathonterremoto.soluzione5.model.Offerta</class>
+		<class>org.hackathon.soluzione5.model.Offerta</class>
 	</persistence-unit>
 </persistence>

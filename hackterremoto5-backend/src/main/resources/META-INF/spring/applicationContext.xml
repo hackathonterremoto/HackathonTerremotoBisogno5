@@ -46,7 +46,7 @@
 	</context:component-scan>
 	
 	<bean
-		class="org.hackathon.soluzione5.web.dao.jpa2.JPAOffertaDAO" />
+		class="org.hackathon.soluzione5.web.dao.jpa2.JPAOffertaDAO" id="offertaDAO"/>
 	
 	
 	<bean
