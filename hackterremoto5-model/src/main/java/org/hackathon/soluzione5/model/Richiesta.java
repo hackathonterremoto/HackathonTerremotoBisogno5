@@ -17,16 +17,14 @@ import org.hibernate.annotations.Type;
 import com.vividsolutions.jts.geom.Point;
 
 @Entity
-public class Offerta implements java.io.Serializable {
+public class Richiesta implements java.io.Serializable {
 
 	// Fields
 
 	private Long entityId;
 	private Point location;
-	private byte[] foto1;
-	private byte[] foto2;
-	private byte[] foto3;
-
+	private Integer raggio;
+	
 	// APPARTAMENTO, STANZA, POSTO LETTO, CAMPER/ROULOTTE, TENDA
 	private String tipologia;
 	private Integer postiLetto;
@@ -36,30 +34,23 @@ public class Offerta implements java.io.Serializable {
 	// CUCINA, LAVANDERIA, ANIMALI DOMESTICI, FUMATORI
 	private String servizi;
 	private Boolean disabili;
-	
-	private Boolean confermata;
-	
-	
 	private String note;
 
 	private User utente;
 
-	public Offerta() {
+	public Richiesta() {
 		super();
-		confermata = false;
-		foto1 = new byte[]{};
-		foto2 = new byte[]{};
-		foto3 = new byte[]{};
 	}
 
-	public Offerta(Point location, byte[] foto1, byte[] foto2, byte[] foto3,
-			String tipologia, Integer postiLetto, Date disponibileDa,
-			Date disponibileFino, String servizi, Boolean disabili, String note) {
+
+	
+
+	public Richiesta(Point location, Integer raggio, String tipologia,
+			Integer postiLetto, Date disponibileDa, Date disponibileFino,
+			String servizi, Boolean disabili, String note, User utente) {
 		super();
 		this.location = location;
-		this.foto1 = foto1;
-		this.foto2 = foto2;
-		this.foto3 = foto3;
+		this.raggio = raggio;
 		this.tipologia = tipologia;
 		this.postiLetto = postiLetto;
 		this.disponibileDa = disponibileDa;
@@ -67,38 +58,11 @@ public class Offerta implements java.io.Serializable {
 		this.servizi = servizi;
 		this.disabili = disabili;
 		this.note = note;
-		this.confermata = confermata;
+		this.utente = utente;
 	}
 
-	@Lob
-	@Column(length = 1024*1024*2)
-	public byte[] getFoto1() {
-		return foto1;
-	}
 
-	public void setFoto1(byte[] foto1) {
-		this.foto1 = foto1;
-	}
 
-	@Lob
-	@Column(length = 1024*1024*2)
-	public byte[] getFoto2() {
-		return foto2;
-	}
-
-	public void setFoto2(byte[] foto2) {
-		this.foto2 = foto2;
-	}
-
-	@Lob
-	@Column(length = 1024*1024*2)
-	public byte[] getFoto3() {
-		return foto3;
-	}
-
-	public void setFoto3(byte[] foto3) {
-		this.foto3 = foto3;
-	}
 
 	// Property accessors
 	@Id
@@ -188,12 +152,18 @@ public class Offerta implements java.io.Serializable {
 		this.utente = utente;
 	}
 
-	public Boolean getConfermata() {
-		return confermata;
+
+
+
+	public Integer getRaggio() {
+		return raggio;
 	}
 
-	public void setConfermata(Boolean confermata) {
-		this.confermata = confermata;
+
+
+
+	public void setRaggio(Integer raggio) {
+		this.raggio = raggio;
 	}
 
 }

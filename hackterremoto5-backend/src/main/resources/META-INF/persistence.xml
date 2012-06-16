@@ -14,5 +14,7 @@
 			<!-- <property name="hibernate.show_sql" value="true"/> -->
 		</properties>
 		<class>org.hackathon.soluzione5.model.Offerta</class>
+		<class>org.hackathon.soluzione5.User</class>
+		<class>org.hackathon.soluzione5.model.Richiesta</class>
 	</persistence-unit>
 </persistence>
