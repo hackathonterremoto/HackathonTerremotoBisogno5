@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.hackathon.soluzione5.model.converter.PointJsonSerializer;
 import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.Point;
@@ -75,6 +77,7 @@ public class Richiesta implements java.io.Serializable {
 	@Column
 	@Type(type = "org.hibernatespatial.GeometryUserType")
 	@NotNull
+	@JsonSerialize(using=PointJsonSerializer.class)
 	public Point getPosizione() {
 		return this.posizione;
 	}

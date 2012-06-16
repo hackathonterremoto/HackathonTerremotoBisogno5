@@ -45,8 +45,9 @@ public class MockOffertaDAO implements OffertaDAO {
 	}
 
 	@Override
-	public List<Offerta> findItems(Point center, Double radius,String tipologia, Integer postiLettoMin, Date da, Date finoA) {
-
+	public List<Offerta> findItems(Point center, Double radius,
+			String tipologia, Integer postiLettoMin, Date da, Date finoA,
+			Boolean confermata) {
 		ArrayList<Offerta> offerte = new ArrayList<Offerta>();
 
 
@@ -56,8 +57,8 @@ public class MockOffertaDAO implements OffertaDAO {
 		Point point;
 		try {
 			point = (Point) fromText.read("POINT(44.486709 11.340637)");
-			Offerta offerta1 = new Offerta(point, read("/app.jpg"), read("/app.jpg"), read("/app.jpg"), "appartmento", 2, new Date(), new Date(), "internet", true, "test");
-			Offerta offerta2 = new Offerta(point, read("/app.jpg"), read("/app.jpg"), read("/app.jpg"), "appartmento2", 5, new Date(), new Date(), "idro massaggio e migliarini come servo", false, "test2");
+			Offerta offerta1 = new Offerta(point,"via Parigi", read("/app.jpg"), read("/app.jpg"), read("/app.jpg"), "appartmento", 2, new Date(), new Date(), "internet", true, "test");
+			Offerta offerta2 = new Offerta(point, "via Parigi", read("/app.jpg"), read("/app.jpg"), read("/app.jpg"), "appartmento2", 5, new Date(), new Date(), "idro massaggio e migliarini come servo", false, "test2");
 			
 			
 			offerte.add(offerta1);	

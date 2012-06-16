@@ -106,29 +106,12 @@ public class JPAOffertaDAO extends GenericDAO implements OffertaDAO {
 
 		}
 
+		
+		
 		testCriteria
-				.add(
-
-				Restrictions.and(
-						SpatialRestrictions.contains("location", bbox),
-						Restrictions.sqlRestriction("( 6371*2*ATAN2( "
-								+
-
-								+center.getX()
-								+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
-								+ center.getX()
-								+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
-								+ center.getY()
-								+ ")*pi()/180/2),2)), "
-								+ "SQRT( 1 -  POWER( SIN((  X(StartPoint(ExteriorRing(location))) - abs("
-								+ center.getX()
-								+ ")   ) * pi()/180/2), 2) + COS(X(StartPoint(ExteriorRing(location))) * pi() / 180) * COS(abs("
-								+ center.getX()
-								+ ")*pi()/180 ) * POWER(SIN((Y(StartPoint(ExteriorRing(location))) - "
-								+ center.getY()
-								+ ")*pi()/180/2),2))"
-								+ "                                                                                                                                                                                                                        ) ) < "
-								+ radius)));
+				.add( Restrictions.and(SpatialRestrictions.within("location", bbox),  
+					Restrictions.sqlRestriction("( 6371*2*ATAN2( SQRT( POWER( SIN((  X(location) - abs("+center.getX()+")   ) * pi()/180/2), 2) + COS(X(location) * pi() / 180) * COS(abs("+center.getX()+")*pi()/180 ) * POWER(SIN((Y(location) - "+center.getY()+")*pi()/180/2),2)), " +
+												"SQRT( 1 -  POWER( SIN((  X(location) - abs("+center.getX()+")   ) * pi()/180/2), 2) + COS(X(location) * pi() / 180) * COS(abs("+center.getX()+")*pi()/180 ) * POWER(SIN((Y(location) - "+center.getY()+")*pi()/180/2),2))) ) < "+radius)));
 
 		if ((tipologia != null) && (!tipologia.equals("")))
 			testCriteria.add(Restrictions.eq("tipologia", tipologia));

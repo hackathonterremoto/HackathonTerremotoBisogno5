@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hackathon.soluzione5.model.Offerta;
 import org.hackathon.soluzione5.web.dao.jpa2.OffertaDAO;
+import org.hackathon.soluzione5.web.dao.mock.MockOffertaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,7 +27,7 @@ import com.vividsolutions.jts.io.WKTReader;
 public class OfferteRestController {
 
 	@Autowired
-	OffertaDAO offertaDAO;
+	MockOffertaDAO offertaDAO;
 
 	private final static Logger logger = Logger.getLogger(OfferteRestController.class.getName());
 
@@ -51,7 +52,7 @@ public class OfferteRestController {
 		convertedRadius = Double.parseDouble(radius);
 
 
-		List<Offerta> offerte =  offertaDAO.findItems(center, convertedRadius, "", 0, null, null);
+		List<Offerta> offerte =  offertaDAO.findItems(center, convertedRadius, "", 0, null, null, null);
 		
 		return offerte.toArray(new Offerta[]{});
 
