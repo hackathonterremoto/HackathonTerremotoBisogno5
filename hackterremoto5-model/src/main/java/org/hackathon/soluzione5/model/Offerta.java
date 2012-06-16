@@ -14,6 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.hackathon.soluzione5.model.converter.PointJsonSerializer;
 import org.hibernate.annotations.Type;
 
 import com.vividsolutions.jts.geom.Point;
@@ -38,7 +40,7 @@ public class Offerta implements java.io.Serializable {
 	// CUCINA, LAVANDERIA, ANIMALI DOMESTICI, FUMATORI
 	private String servizi;
 	private Boolean disabili;
-	
+	private String indirizzo;
 	private Boolean confermata;
 	
 	
@@ -54,10 +56,11 @@ public class Offerta implements java.io.Serializable {
 		foto3 = new byte[]{};
 	}
 
-	public Offerta(Point location, byte[] foto1, byte[] foto2, byte[] foto3,
+	public Offerta(Point location, String indirizzo, byte[] foto1, byte[] foto2, byte[] foto3,
 			String tipologia, Integer postiLetto, Date disponibileDa,
 			Date disponibileFino, String servizi, Boolean disabili, String note) {
 		super();
+		this.indirizzo = indirizzo;
 		this.location = location;
 		this.foto1 = foto1;
 		this.foto2 = foto2;
@@ -112,9 +115,10 @@ public class Offerta implements java.io.Serializable {
 		this.entityId = entityId;
 	}
 
-	@Column(name = "geom")
+	@Column
 	@Type(type = "org.hibernatespatial.GeometryUserType")
 	@NotNull
+	@JsonSerialize(using=PointJsonSerializer.class)
 	public Point getLocation() {
 		return this.location;
 	}
@@ -197,6 +201,14 @@ public class Offerta implements java.io.Serializable {
 
 	public void setConfermata(Boolean confermata) {
 		this.confermata = confermata;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 
 }
