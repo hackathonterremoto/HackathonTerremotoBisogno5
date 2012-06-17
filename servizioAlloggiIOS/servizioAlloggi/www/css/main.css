@@ -1,0 +1,134 @@
+/* fix flickering transizione android*/
+.ui-page {
+  -webkit-backface-visibility: hidden;
+}
+.clear {
+  clear: both;
+}
+a {
+  text-decoration: none;
+}
+#home-content {
+  text-align: center;
+}
+.home-button {
+  width: 100%;
+  border: 1px solid #EEEEEE;
+  margin-top: 1em;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9db80), color-stop(100%,#96c56f)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #a9db80 0%,#96c56f 100%); /* Chrome10+,Safari5.1+ */
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+}
+.homeButtonText {
+  font-size: 4em;
+}
+#searchpage_locationaware {
+  margin-bottom: 4em;
+}
+#searchpage_locationaware p {
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  text-shadow: 0;
+  -webkit-margin-before: 1em;
+  width: 60%;
+  float: left;
+  font-size: small;
+  font-weight: bold;
+}
+#searchpage_locationaware a {
+
+  float: right;
+}
+#searchDetails {
+  text-align: left;
+}
+.detailsLabel {
+  font-weight: bold;
+}
+.detailsLabelIconRow {
+  margin-left: 1em;
+}
+#searchDetailsPage .ui-content {
+  padding: 10px;
+}
+.searchDetailsMainContainer {
+  border: 1px solid #babdb6;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+  background-color: #FFFFFF;
+  overflow: auto;
+  padding: 10px;
+}
+.searchDetailsPicContainer {
+  text-align: center;
+}
+.searchDetailsPicContainer img {
+  height: auto;
+  border: 3px solid #dddddd;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+  width: 95%;
+}
+#offer-content {
+  text-align: left;
+}
+label.ui-input-text {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  text-shadow: 0;
+  font-weight: bold;
+}
+
+.offerForm_location label.ui-input-text  { vertical-align: top;   }
+.offerForm_location label.ui-input-text { display: inline-block;  width: 80%;  margin: 0 2% 0 0; }
+.offerForm_location input.ui-input-text,
+.offerForm_location textarea.ui-input-text,
+.offerForm_location .ui-input-search { width: 80%; display: inline-block; }
+
+.offerForm_calendar label.ui-input-text  { vertical-align: top;   }
+.offerForm_calendar label.ui-input-text { display: inline-block;  width: 70%;  margin: 0 2% 0 0; }
+.offerForm_calendar input.ui-input-text,
+.offerForm_calendar textarea.ui-input-text,
+.offerForm_calendar .ui-input-search { width: 70%; display: inline-block; }
+
+.formButtonFloatedRight {
+  float:right;
+}
+
+.ui-icon-calendar {
+  background-image: url("../img/customicons/calendar.png");
+}
+
+#offer2-content {
+  text-align:center;
+}
+
+.breadcrumbImgContainer {
+  width:100%;
+}
+.breadcrumbImgContainer img {
+  width:100%;
+  height:auto;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon-calendar {
+    background-image: url("../img/customicons/calendar_2x.png");
+    background-size: 18px 18px;
+  }
+}
+
+.ui-icon-camera {
+  background-image: url("../img/customicons/camera.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon-camera {
+    background-image: url("../img/customicons/camera_2x.png");
+    background-size: 18px 18px;
+  }
+}

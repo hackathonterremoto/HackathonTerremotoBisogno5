@@ -38,7 +38,7 @@ public class OfferteRestController {
 
 	@RequestMapping(value = offerteListPath, method = RequestMethod.GET)
 	@ResponseBody
-	public Offerta[] getOfferte(HttpServletRequest request,@PathVariable String latitude,@PathVariable String longitude,@PathVariable String radius) throws ParseException{
+	public Offerta[] getOfferte(HttpServletRequest request,HttpServletResponse response,@PathVariable String latitude,@PathVariable String longitude,@PathVariable String radius) throws ParseException{
 		logger.info("Received offerte request");
 
 		logger.info("Spatial query on a restriction area ("+latitude+","+longitude+") "+radius);
@@ -51,7 +51,8 @@ public class OfferteRestController {
 			
 		convertedRadius = Double.parseDouble(radius);
 
-
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		
 		List<Offerta> offerte =  offertaDAO.findItems(center, convertedRadius, "", 0, null, null, null);
 		
 		return offerte.toArray(new Offerta[]{});
