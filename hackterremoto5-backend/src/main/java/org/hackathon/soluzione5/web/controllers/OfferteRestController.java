@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,6 +35,7 @@ public class OfferteRestController {
 
 
 	public static final String offerteListPath = "/offerte/latitude/{latitude}/longitude/{longitude}/radius/{radius}/";
+	public static final String offerteAddPath = "/offerte/";
 
 
 	@RequestMapping(value = offerteListPath, method = RequestMethod.GET)
@@ -59,6 +61,20 @@ public class OfferteRestController {
 
 
 	}
+	
+	
+	@RequestMapping(value = offerteAddPath, method = RequestMethod.PUT)
+	@ResponseBody
+	public void addOfferta(HttpServletRequest request,HttpServletResponse response,@RequestBody Offerta offerta) throws ParseException{
+		logger.info("Received add offerta request");
+
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		
+		offertaDAO.insert(offerta);
+
+	}
+	
+	
 	
 	
 
