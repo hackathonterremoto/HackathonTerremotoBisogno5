@@ -103,9 +103,32 @@ label.ui-input-text {
   background-image: url("../img/customicons/calendar.png");
 }
 
+#offer2-content {
+  text-align:center;
+}
+
+.breadcrumbImgContainer {
+  width:100%;
+}
+.breadcrumbImgContainer img {
+  width:100%;
+  height:auto;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .ui-icon-myapp-email {
+  .ui-icon-calendar {
     background-image: url("../img/customicons/calendar_2x.png");
+    background-size: 18px 18px;
+  }
+}
+
+.ui-icon-camera {
+  background-image: url("../img/customicons/camera.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon-camera {
+    background-image: url("../img/customicons/camera_2x.png");
     background-size: 18px 18px;
   }
 }
