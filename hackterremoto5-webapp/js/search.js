@@ -1,17 +1,41 @@
+var serverURL = "http://localhost:8080/servizioAlloggi/";
 var offers;
 var base64Append = 'data:image/jpeg;base64,';
+
+var geocoder;
 
 $('#offersListPage').live('pagebeforeshow', function(event) {
   getOffersList();
 });
 function getOffersList() {
-  $.getJSON('../data/offers.json', function(data) {
-    $('#offersList li').remove();
-    offers = data.offers;
-    $.each(offers, function(index, offer) {
-      $('#offersList').append('<li><a href="searchDetails.html" data-offer-id="' + offer.entityId + '"><h3>' + offer.tipologia + '</h3><p><span class="detailsLabel">Indirizzo:</span> ' + offer.indirizzo + '</p><p><span class="detailsLabel">Posti letto:</span> ' + offer.postiLetto + '</p><p><span class="detailsLabel">Periodo disponibilità:</span> dal ' + offer.disponibileDa + ' al ' + offer.disponibileFino + '</p></a></li>');
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    //var coord = position.coords.latitude + "," + position.coords.longitude;
+    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+      'latLng' : latlng
+    }, function(results, status) {
+      if(status == google.maps.GeocoderStatus.OK) {
+        if(results[1]) {
+          $('#locationFound').text(results[1].formatted_address);
+        } else {
+          $('#locationFound').text('Posizione non trovata');
+        }
+      } else {
+        $('#locationFound').text('Posizione non trovata');
+      }
     });
-    $('#offersList').listview('refresh');
+    requestURL = 'offerte/latitude/' + position.coords.latitude + '/longitude/' + position.coords.longitude + '/radius/' + 10 + '/?callback=?';
+    $.getJSON(serverURL+requestURL, function(data) {
+      console.log(data);
+      $('#offersList li').remove();
+      offers = data.offers;
+      $.each(offers, function(index, offer) {
+        $('#offersList').append('<li><a href="searchDetails.html" data-offer-id="' + offer.entityId + '"><h3>' + offer.tipologia + '</h3><p><span class="detailsLabel">Indirizzo:</span> ' + offer.indirizzo + '</p><p><span class="detailsLabel">Posti letto:</span> ' + offer.postiLetto + '</p><p><span class="detailsLabel">Periodo disponibilità:</span> dal ' + offer.disponibileDa + ' al ' + offer.disponibileFino + '</p></a></li>');
+      });
+      $('#offersList').listview('refresh');
+    });
   });
 };
 
@@ -42,16 +66,16 @@ $('#searchDetailsPage').live('pagebeforeshow', function(event) {
   $('#offer_disponibileFino').text(localStorage.getItem("offer_disponibileFino"));
   $('#offer_servizi').text(localStorage.getItem("offer_servizi"));
   $('#offer_note').text(localStorage.getItem("offer_note"));
-  if (localStorage.getItem("offer_pic1"))
-    $('#offer_pic1').attr('src', base64Append+localStorage.getItem("offer_pic1"));
+  if(localStorage.getItem("offer_pic1"))
+    $('#offer_pic1').attr('src', base64Append + localStorage.getItem("offer_pic1"));
   else
     $('#offer_pic1').remove();
-  if (localStorage.getItem("offer_pic2"))
-    $('#offer_pic2').attr('src', base64Append+localStorage.getItem("offer_pic2"));
+  if(localStorage.getItem("offer_pic2"))
+    $('#offer_pic2').attr('src', base64Append + localStorage.getItem("offer_pic2"));
   else
     $('#offer_pic2').remove();
-  if (localStorage.getItem("offer_pic3"))
-    $('#offer_pic3').attr('src', base64Append+localStorage.getItem("offer_pic3"));
+  if(localStorage.getItem("offer_pic3"))
+    $('#offer_pic3').attr('src', base64Append + localStorage.getItem("offer_pic3"));
   else
     $('#offer_pic3').remove();
 });

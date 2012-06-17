@@ -11,25 +11,37 @@ a {
 #home-content {
   text-align: center;
 }
-
 .home-button {
   width: 100%;
   border: 1px solid #EEEEEE;
   margin-top: 1em;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9db80), color-stop(100%,#96c56f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #a9db80 0%,#96c56f 100%); /* Chrome10+,Safari5.1+ */
+border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
 }
 .homeButtonText {
   font-size: 4em;
 }
 #searchpage_locationaware {
-  text-align: left;
-  margin-bottom: 1em;
+  margin-bottom: 4em;
 }
-#searchpage_locationaware h6 {
+#searchpage_locationaware p {
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  text-shadow: 0;
   -webkit-margin-before: 1em;
   width: 60%;
   float: left;
+  font-size:small;
+  font-weight: bold;
+}
+#searchpage_locationaware a {
+
+  float: right;
+
 }
 #searchDetails {
   text-align: left;
