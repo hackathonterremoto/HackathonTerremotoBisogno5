@@ -8,7 +8,7 @@
 a {
   text-decoration: none;
 }
-#home-content {
+#home_content {
   text-align: center;
 }
 .home-button {
@@ -22,7 +22,7 @@ a {
   box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
 }
 .homeButtonText {
-  font-size: 4em;
+  font-size: 3em;
 }
 #searchpage_locationaware {
   margin-bottom: 4em;
@@ -113,6 +113,20 @@ label.ui-input-text {
 .breadcrumbImgContainer img {
   width:100%;
   height:auto;
+}
+
+#homeLogoImgContainer{
+  text-align:center;
+  width:100%;
+  height: 40%;
+}
+#homeLogoImgContainer img {
+  height:100%;
+  width:auto;
+}
+
+#startpage {
+  text-align:center;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
