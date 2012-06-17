@@ -26,11 +26,11 @@ function getOffersList() {
         $('#locationFound').text('Posizione non trovata');
       }
     });
-    requestURL = 'offerte/latitude/' + position.coords.latitude + '/longitude/' + position.coords.longitude + '/radius/' + 10 + '/?callback=?';
-    $.getJSON(serverURL+requestURL, function(data) {
-      console.log(data);
+    requestURL = 'offerte/latitude/' + position.coords.latitude + '/longitude/' + position.coords.longitude + '/radius/' + 10 + '/';
+    //serverURL+requestURL
+    $.getJSON('../data/offers.json', function(data) {
       $('#offersList li').remove();
-      offers = data.offers;
+      offers = data;
       $.each(offers, function(index, offer) {
         $('#offersList').append('<li><a href="searchDetails.html" data-offer-id="' + offer.entityId + '"><h3>' + offer.tipologia + '</h3><p><span class="detailsLabel">Indirizzo:</span> ' + offer.indirizzo + '</p><p><span class="detailsLabel">Posti letto:</span> ' + offer.postiLetto + '</p><p><span class="detailsLabel">Periodo disponibilità:</span> dal ' + offer.disponibileDa + ' al ' + offer.disponibileFino + '</p></a></li>');
       });
