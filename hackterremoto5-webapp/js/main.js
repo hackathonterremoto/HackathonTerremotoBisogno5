@@ -1,1 +1,1 @@
-
+var enablePhonegap = true;

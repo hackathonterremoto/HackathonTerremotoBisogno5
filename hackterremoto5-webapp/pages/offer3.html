@@ -10,10 +10,45 @@
         <a href="offer.html" data-rel="back" data-icon="arrow-l" data-theme="b">Indietro</a>
         <h1>Offri Alloggio</h1>
       </div><!-- /header -->
-      <div data-role="content" id="offer2-content">
+      <div data-role="content" class="offerform-content">
         <div class="breadcrumbImgContainer">
           <img src="../img/breadcrumb/03.png"/>
         </div>
+        <form action="#" method="post" class="form">
+          <div data-role="fieldcontain" data-mini="true">
+            <label for="offerForm_nome">Nome *</label>
+            <input type="text" name="offerForm_nome" id="offerForm_nome" value=""  />
+          </div>
+          <div data-role="fieldcontain" data-mini="true">
+            <label for="offerForm_cognome">Cognome *</label>
+            <input type="text" name="offerForm_cognome" id="offerForm_cognome" value=""  />
+          </div>
+          <div data-role="fieldcontain" data-mini="true">
+            <label for="offerForm_email">Email *</label>
+            <input type="text" name="offerForm_email" id="offerForm_email" value=""  />
+          </div>
+          <div data-role="fieldcontain" data-mini="true">
+            <label for="offerForm_tel">Tel. *</label>
+            <input type="text" name="offerForm_tel" id="offerForm_tel" value=""  />
+          </div>
+          <div data-role="fieldcontain" data-mini="true">
+            <label for="offerForm_note">Note</label>
+            <textarea cols="40" rows="8" name="offerForm_note" id="offerForm_note"></textarea>
+          </div>
+          <div data-role="fieldcontain" data-mini="true">
+            <fieldset data-role="controlgroup">
+              <input type="checkbox" name="offerForm_privacy" id="offerForm_privacy" class="custom" />
+              <label for="offerForm_privacy"><h5>Autorizzo il trattamento dei dati personali ai sensi del D. lgs. 196/03</h5></label>
+            </fieldset>
+          </div>
+          <fieldset>
+            <div>
+              <button type="submit" data-theme="b">
+                Invia
+              </button>
+            </div>
+          </fieldset>
+        </form>
       </div><!-- /content -->
     </div><!-- /page -->
   </body>

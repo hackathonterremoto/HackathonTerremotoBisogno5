@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+xmlns:gap	= "http://phonegap.com/ns/1.0"
+id		= "it.hackathonterremoto.alloggi"
+versionCode = "1"
+version 	= "0.0.1">
+
+  <name>Alloggi</name>
+  <description>HackathonTerremoto - Servizio Alloggi</description>
+  <author href="http://www.epocaricerca.it"
+  email="info@epocaricerca.it">EPOCA</author>
+  <!-- the default attribute can also be used -->
+  <!-- <icon src="icons/IconBB.png" default="true" /> -->
+  <!-- specifies the icon to be displayed when hovered over (on BlackBerry) -->
+  <!-- <icon src="icons/IconBBhover.png" hover="true" /> -->
+  <!-- iOS requires specific dimensions for icons; classic iPhone screens, Retina
+  displays, and iPad screens respectively -->
+  <icon src="img/icons/icon.png" width="57" height="57"/>
+  <icon src="img/icons/icon-72.png" gap:platform="ios" width="72" height="72"/>
+  <icon src="img/icons/icon_at_2x.png" width="114" height="114"/>
+  <!-- Android requires specific dimensions; ldpi, mdpi, and hdpi respectively -->
+  <icon src="img/icons/ic-36x36.png" width="36" height="36"/>
+  <icon src="img/icons/ic-48x48.png" width="48" height="48"/>
+  <icon src="img/icons/ic-72x72.png" width="72" height="72"/>
+  <!-- The default splash must be named splash.png and must reside in the root of your application folder -->
+  <!-- <gap:splash src="splash.png" /> -->
+  <!-- iOS requires specific dimensions for different devices; classic iPhone
+  screens, Retina displays, and iPad screens -->
+  <!-- <gap:splash src="splashes/iphone-320x480.png" width="320" height="480"/>
+  <gap:splash src="splashes/iphone2x-640x960.png" width="640" height="960"/>
+  <gap:splash src="splashes/iPad-768x1004.png" width="768" height="1004"/>
+  <gap:splash src="splashes/iPad2x-1536x2008.png" width="1536" height="2008"/>
+  <gap:splash src="splashes/android-ldpi.png" gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="splashes/android-mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="splashes/android-hdpi.png" gap:platform="android" gap:density="hdpi" /> -->
+  <!-- BlackBerry supports a single splash image -->
+  <!-- <gap:splash src="splashes/bb-splash.png" gap:platform="blackberry" /> -->
+  <preference name="orientation" value="portrait" />
+  <preference name="phonegap-version" value="1.7.0" />
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <preference name="webviewbounce" value="false" />
+  <preference name="prerendered-icon" value="true" />
+  <preference name="fullscreen" value="true" />
+  <access origin="*" />
+</widget>

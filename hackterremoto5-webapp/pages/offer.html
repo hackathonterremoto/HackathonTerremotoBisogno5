@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div data-role="page">
+    <div data-role="page" id="createOfferPage1">
       <div data-role="header" data-position="inline">
         <a href="../index.html" data-rel="back" data-icon="arrow-l" data-theme="b">Indietro</a>
         <h1>Offri Alloggio</h1>
-        <a href="offer2.html" data-icon="arrow-r" data-theme="b" data-iconpos="right">Avanti</a>
+        <a href="offer2.html" id="createOfferForwardBtn1" data-icon="arrow-r" data-theme="b" data-iconpos="right">Avanti</a>
       </div><!-- /header -->
-      <div data-role="content" id="offer-content">
+      <div data-role="content" class="offerform-content">
         <div class="breadcrumbImgContainer">
           <img src="../img/breadcrumb/01.png"/>
         </div>
-        <form action="#" method="post" class="form">
+        <form action="#" method="post" class="form" id="offerFormPage1">
           <div data-role="fieldcontain" class="offerForm_location">
             <label for="offerForm_location">Localit&agrave;:</label>
             <input type="text" name="offerForm_location" id="offerForm_location" value="" />
@@ -41,15 +41,15 @@
               <legend>
                 Tipologia:
               </legend>
-              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_1" value="choice-1" checked="checked" />
+              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_1" value="Appartamento" checked="checked" />
               <label for="offerForm_tipologia_1">Appartamento</label>
-              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_2" value="choice-2"  />
+              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_2" value="Stanza"  />
               <label for="offerForm_tipologia_2">Stanza</label>
-              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_3" value="choice-3"  />
+              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_3" value="Posto letto"  />
               <label for="offerForm_tipologia_3">Posto letto</label>
-              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_4" value="choice-4"  />
+              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_4" value="Camper/Roulotte"  />
               <label for="offerForm_tipologia_4">Camper/Roulotte</label>
-              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_5" value="choice-5"  />
+              <input type="radio" name="offerForm_tipologia_1" id="offerForm_tipologia_5" value="Tenda"  />
               <label for="offerForm_tipologia_5">Tenda</label>
             </fieldset>
           </div>
@@ -58,20 +58,20 @@
               <legend>
                 Servizi:
               </legend>
-              <input type="checkbox" name="offerForm_servizi_1" id="offerForm_servizi_1" class="custom" />
+              <input type="checkbox" value="Cucina" name="offerForm_servizi_1" id="offerForm_servizi_1" class="custom"/>
               <label for="offerForm_servizi_1">Cucina</label>
-              <input type="checkbox" name="offerForm_servizi_2" id="offerForm_servizi_2" class="custom" />
+              <input type="checkbox" value="Lavanderia" name="offerForm_servizi_2" id="offerForm_servizi_2" class="custom" />
               <label for="offerForm_servizi_2">Lavanderia</label>
-              <input type="checkbox" name="offerForm_servizi_3" id="offerForm_servizi_3" class="custom" />
+              <input type="checkbox" value="Animali domestici" name="offerForm_servizi_3" id="offerForm_servizi_3" class="custom" />
               <label for="offerForm_servizi_3">Animali domestici</label>
-              <input type="checkbox" name="offerForm_servizi_4" id="offerForm_servizi_4" class="custom" />
+              <input type="checkbox" value="Fumatori" name="offerForm_servizi_4" id="offerForm_servizi_4" class="custom" />
               <label for="offerForm_servizi_4">Fumatori</label>
             </fieldset>
           </div>
           <div data-role="fieldcontain" data-mini="true">
             <fieldset data-role="controlgroup">
               <legend>
-                Disable friendly:
+                Facilitazioni per disabili:
               </legend>
               <input type="checkbox" name="offerForm_disabili_1" id="offerForm_disabili_1" class="custom" />
               <label for="offerForm_disabili_1">Accesso</label>
@@ -79,7 +79,7 @@
               <label for="offerForm_disabili_2">Bagno</label>
             </fieldset>
           </div>
-          <a href="offer2.html" data-role="button" data-theme='b' data-iconpos="right" data-icon="arrow-r">
+          <a href="offer2.html" id="createOfferForwardBtn2" data-role="button" data-theme='b' data-iconpos="right" data-icon="arrow-r">
             Avanti
           </a>
         </form>

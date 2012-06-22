@@ -24,6 +24,29 @@ a {
 .homeButtonText {
   font-size: 3em;
 }
+
+
+.home-button .ui-link {
+  color: #F6F4F7;
+  text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #575759 /*{c-body-shadow-color}*/;
+}
+.home-button .ui-link:visited {
+  color: #F6F4F7;
+  text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #575759 /*{c-body-shadow-color}*/;
+}
+.home-button .ui-link:active {
+  color: #F6F4F7;
+  text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #575759 /*{c-body-shadow-color}*/;
+}
+.home-button .ui-link:hover {
+  color: #F6F4F7;
+  text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #575759 /*{c-body-shadow-color}*/;
+}
+.home-button .ui-link {
+  color: #F6F4F7;
+  text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #575759 /*{c-body-shadow-color}*/;
+}
+
 #searchpage_locationaware {
   margin-bottom: 4em;
 }
@@ -73,7 +96,7 @@ a {
   margin: 5px 0px 5px 0px;
   width: 95%;
 }
-#offer-content {
+.offerform-content {
   text-align: left;
 }
 label.ui-input-text {
@@ -123,10 +146,6 @@ label.ui-input-text {
 #homeLogoImgContainer img {
   height:100%;
   width:auto;
-}
-
-#startpage {
-  text-align:center;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
