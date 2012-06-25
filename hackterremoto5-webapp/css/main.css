@@ -118,6 +118,19 @@ label.ui-input-text {
 .offerForm_calendar textarea.ui-input-text,
 .offerForm_calendar .ui-input-search { width: 70%; display: inline-block; }
 
+.createOfferPictureContainer {
+  width:100%;
+  text-align: center;
+}
+
+.createOfferPictureContainer img {
+  width:auto;
+  height:200px;
+  border: 3px solid #dddddd;
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+}
+
 .formButtonFloatedRight {
   float:right;
 }
