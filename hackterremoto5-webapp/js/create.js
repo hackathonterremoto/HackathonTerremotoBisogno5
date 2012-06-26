@@ -5,6 +5,16 @@ $("#createOfferForwardBtn1").live("click", function(event, ui) {
 $("#createOfferForwardBtn2").live("click", function(event, ui) {
   saveOfferPage1();
 });
+
+$("#createOfferForwardBtn3").live("click", function(event, ui) {
+	  saveOfferPage2();
+});
+
+$("#createOfferFormSubmit").live("click", function(event, ui) {
+	  submitCreateOfferForm();
+});
+
+
 function saveOfferPage1() {
   // using web storage to temporarily save form data before submit
   offerForm_location_value = $("#offerForm_location").val();
@@ -23,19 +33,89 @@ function saveOfferPage1() {
   offerForm_disabili_2 = $('#offerForm_disabili_2:checked').length ? $('#offerForm_disabili_2').val() + " " : '';
   offerForm_disabili = offerForm_disabili_1 + offerForm_disabili_2;
 
-  localStorage.setItem("offerForm_location_value", offerForm_location_value);
-  localStorage.setItem("offerForm_postiLetto_value", offerForm_postiLetto_value);
-  localStorage.setItem("offerForm_dispDal_value", offerForm_dispDal_value);
-  localStorage.setItem("offerForm_dispAl_value", offerForm_dispAl_value);
-  localStorage.setItem("offerForm_tipologia_1_value", offerForm_tipologia_1_value);
+  localStorage.setItem("offerForm_location", offerForm_location_value);
+  localStorage.setItem("offerForm_postiLetto", offerForm_postiLetto_value);
+  localStorage.setItem("offerForm_dispDal", offerForm_dispDal_value);
+  localStorage.setItem("offerForm_dispAl", offerForm_dispAl_value);
+  localStorage.setItem("offerForm_tipologia_1", offerForm_tipologia_1_value);
   localStorage.setItem("offerForm_servizi", offerForm_servizi);
   localStorage.setItem("offerForm_disabili", offerForm_disabili);
 
 };
 
-/*$('#createOfferPage2').live('pagebeforeshow', function(event) {
+function saveOfferPage2() {
+	  // using web storage to temporarily save form data before submit
+	  localStorage.setItem("offerForm_image1", removeBase64Prefix($('#smallImage1').attr("src")) );
+	  localStorage.setItem("offerForm_image2", removeBase64Prefix($('#smallImage2').attr("src")) );
+	  localStorage.setItem("offerForm_image3", removeBase64Prefix($('#smallImage3').attr("src")) );
+};
 
- });*/
+function removeBase64Prefix(base64ImageWithPrefix) {
+	return base64ImageWithPrefix.substring('data:image/jpeg;base64,'.length);
+};
+
+function submitCreateOfferForm() {
+	offerForm_location = localStorage.getItem("offerForm_location");
+	offerForm_postiLetto = localStorage.getItem("offerForm_postiLetto");
+	offerForm_dispDal = localStorage.getItem("offerForm_dispDal");
+	offerForm_dispAl = localStorage.getItem("offerForm_dispAl");
+	offerForm_tipologia_1 = localStorage.getItem("offerForm_tipologia_1");
+	offerForm_servizi = localStorage.getItem("offerForm_servizi");
+	offerForm_disabili = localStorage.getItem("offerForm_disabili");
+	offerForm_image1 = localStorage.getItem("offerForm_image1");
+	offerForm_image2 = localStorage.getItem("offerForm_image2");
+	offerForm_image3 = localStorage.getItem("offerForm_image3");
+	
+	offerForm_nome_value = $("#offerForm_nome").val();
+	offerForm_cognome_value = $("#offerForm_cognome").val();
+	offerForm_email_value = $("#offerForm_email").val();
+	offerForm_tel_value = $("#offerForm_tel").val();
+	offerForm_note_value = $("#offerForm_note").val();
+	offerForm_privacy_value = $("#offerForm_privacy").val();
+	
+	// TODO: check null or mandatory values
+	
+	// create json object
+	// TODO: handle user information
+	jsonObject = {
+	      "location": "",
+	      "indirizzo": offerForm_location,
+	      "tipologia": offerForm_tipologia_1,
+	      "postiLetto": offerForm_postiLetto,
+	      "disponibileDa": offerForm_dispDal,
+	      "disponibileFino": offerForm_dispAl,
+	      "servizi": offerForm_servizi,
+	      "disabili": offerForm_disabili,
+	      "note": offerForm_note_value,
+	      "foto1": offerForm_image1,
+	      "foto2": offerForm_image2,
+	      "foto3": offerForm_image3,
+	      "utente": {
+	    	  "nome": offerForm_nome_value,
+	    	  "cognome": offerForm_cognome_value,
+	    	  "email": offerForm_email_value,
+	    	  "telefono": offerForm_tel_value
+	      }
+	    };
+	
+	
+	// send request
+	var serverURL = "http://localhost:8080/servizioAlloggi/offerte/";
+	$.ajax({
+        type: 'PUT',
+        contentType: 'application/json',
+        url: serverURL,
+        dataType: "json",
+        data: jsonObject,
+        success: function(data, textStatus, jqXHR){
+            alert('Offerta inviata correttamente');
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('Errore invio offerta: ' + textStatus);
+        }
+    });
+}
+
 
 var pictureSource;
 var destinationType;
